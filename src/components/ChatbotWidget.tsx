@@ -98,7 +98,7 @@ const ChatbotWidget = () => {
       {/* Chat Interface */}
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-end justify-end p-4 md:p-6">
-          <div className="relative w-full max-w-md h-full max-h-[750px] md:h-auto md:max-h-[650px] bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl md:rounded-2xl border-2 border-yellow-400/60 shadow-2xl shadow-yellow-400/10 overflow-hidden">
+          <div className="relative w-full max-w-md h-[50vh] bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl md:rounded-2xl border-2 border-yellow-400/60 shadow-2xl shadow-yellow-400/10 overflow-hidden flex flex-col">
             {/* Golden edge effects */}
             <div className="absolute inset-0 rounded-xl md:rounded-2xl bg-gradient-to-r from-yellow-400/10 via-transparent to-yellow-400/10 pointer-events-none" />
             
@@ -108,10 +108,19 @@ const ChatbotWidget = () => {
                    animationDuration: '5s',
                    animationIterationCount: 'infinite',
                    animationTimingFunction: 'ease-in-out'
-                 }} />
+                  }} />
+
+            {/* Close button */}
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors duration-200 p-2 z-10 bg-slate-800/80 rounded-full"
+              aria-label="Close chat"
+            >
+              <X className="w-4 h-4" />
+            </button>
 
             {/* Messages */}
-            <div className="relative flex-1 overflow-y-auto p-4 space-y-4 max-h-[550px]">
+            <div className="relative flex-1 overflow-y-auto p-4 space-y-4">
               {messages.map((msg) => (
                 <div
                   key={msg.id}
@@ -156,17 +165,8 @@ const ChatbotWidget = () => {
             </div>
 
             {/* Input */}
-            <div className="relative p-4 border-t border-yellow-400/30 bg-slate-800/50">
-              {/* Close button */}
-              <button
-                onClick={() => setIsOpen(false)}
-                className="absolute top-2 right-2 text-gray-400 hover:text-white transition-colors duration-200 p-1 z-10"
-                aria-label="Close chat"
-              >
-                <X className="w-4 h-4" />
-              </button>
-              
-              <div className="flex space-x-2 mt-6">
+            <div className="relative p-4 bg-slate-800/50 flex-shrink-0">
+              <div className="flex space-x-2">
                 <input
                   type="text"
                   value={message}

@@ -145,7 +145,7 @@ const Navigation = () => {
       }`}>
         <div className={`transition-all duration-500 backdrop-blur-md border ${
           isHeroSection 
-            ? 'w-12 h-12 rounded-full bg-slate-900/90 border-slate-700/50 shadow-2xl shadow-primary/10 flex items-center justify-center cursor-pointer group hover:w-auto hover:px-4'
+            ? 'px-4 py-3 rounded-full bg-slate-900/90 border-slate-700/50 shadow-2xl shadow-primary/10 flex items-center justify-center cursor-pointer'
             : `px-6 py-3 rounded-full ${
                 isScrolled 
                   ? 'bg-slate-900/90 border-slate-700/50 shadow-2xl shadow-primary/10' 
