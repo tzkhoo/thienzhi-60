@@ -55,24 +55,6 @@ const ChatbotWidget = () => {
             className="relative group"
             aria-label="Open chat"
           >
-            {/* Particle Effects Container */}
-            <div className="absolute inset-0 overflow-visible">
-              {/* Golden particles flowing from edges */}
-              {Array.from({ length: 8 }, (_, i) => (
-                <div
-                  key={i}
-                  className="absolute w-1 h-1 bg-yellow-400 rounded-full animate-pulse"
-                  style={{
-                    left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`,
-                    animationDelay: `${i * 0.3}s`,
-                    animationDuration: `${2 + Math.random() * 2}s`,
-                    transform: `translate(${(Math.random() - 0.5) * 60}px, ${(Math.random() - 0.5) * 60}px)`
-                  }}
-                />
-              ))}
-            </div>
-            
             {/* Main Button */}
             <div className="relative w-16 h-16 bg-gradient-to-br from-slate-800 to-slate-900 rounded-full border-2 border-yellow-400/60 shadow-xl hover:shadow-2xl hover:shadow-yellow-400/20 transition-all duration-300" style={{ animation: 'bounce 3s infinite' }}>
               {/* Golden edge glow */}
@@ -82,14 +64,6 @@ const ChatbotWidget = () => {
               <div className="absolute inset-0 flex items-center justify-center">
                 <MessageCircle className="w-8 h-8 text-yellow-400 group-hover:scale-110 transition-transform duration-300" />
               </div>
-              
-              {/* Periodic flash effect */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent transform -skew-x-12 animate-flash opacity-0" 
-                   style={{ 
-                     animationDuration: '5s',
-                     animationIterationCount: 'infinite',
-                     animationTimingFunction: 'ease-in-out'
-                   }} />
             </div>
           </button>
         </div>
@@ -99,16 +73,6 @@ const ChatbotWidget = () => {
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-end justify-end p-4 md:p-6">
           <div className="relative w-full max-w-md h-[50vh] bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl md:rounded-2xl border-2 border-yellow-400/60 shadow-2xl shadow-yellow-400/10 overflow-hidden flex flex-col">
-            {/* Golden edge effects */}
-            <div className="absolute inset-0 rounded-xl md:rounded-2xl bg-gradient-to-r from-yellow-400/10 via-transparent to-yellow-400/10 pointer-events-none" />
-            
-            {/* Periodic screen flash */}
-            <div className="absolute inset-0 rounded-xl md:rounded-2xl bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent transform -skew-x-12 animate-flash opacity-0 pointer-events-none"
-                 style={{ 
-                   animationDuration: '5s',
-                   animationIterationCount: 'infinite',
-                   animationTimingFunction: 'ease-in-out'
-                  }} />
 
             {/* Close button */}
             <button
@@ -124,23 +88,17 @@ const ChatbotWidget = () => {
               {messages.map((msg) => (
                 <div
                   key={msg.id}
-                  className={`flex items-start space-x-3 ${msg.isBot ? 'justify-start' : 'justify-end flex-row-reverse space-x-reverse'}`}
+                  className={`flex items-start space-x-3 ${msg.isBot ? 'justify-start' : 'justify-end'}`}
                 >
                   {/* Avatar */}
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                    msg.isBot 
-                      ? 'bg-gradient-to-br from-yellow-400 to-yellow-600' 
-                      : 'bg-gradient-to-br from-blue-500 to-blue-700'
-                  }`}>
-                    {msg.isBot ? (
+                  {msg.isBot && (
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-yellow-400 to-yellow-600">
                       <span className="text-slate-900 font-bold text-sm">TZ</span>
-                    ) : (
-                      <span className="text-white font-bold text-sm">U</span>
-                    )}
-                  </div>
+                    </div>
+                  )}
                   
                   {/* Message bubble */}
-                  <div className="flex flex-col max-w-xs lg:max-w-md">
+                  <div className={`flex flex-col max-w-xs lg:max-w-md ${msg.isBot ? '' : 'items-end'}`}>
                     {/* Name */}
                     <span className={`text-xs mb-1 ${msg.isBot ? 'text-yellow-400' : 'text-blue-400'}`}>
                       {msg.isBot ? 'Thien Zhi AI' : 'You'}
@@ -160,6 +118,13 @@ const ChatbotWidget = () => {
                       </p>
                     </div>
                   </div>
+                  
+                  {/* User Avatar */}
+                  {!msg.isBot && (
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-blue-500 to-blue-700 ml-3">
+                      <span className="text-white font-bold text-sm">U</span>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -183,23 +148,6 @@ const ChatbotWidget = () => {
                   <Send className="w-4 h-4" />
                 </button>
               </div>
-            </div>
-
-            {/* Floating particles around edges */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-xl md:rounded-2xl">
-              {Array.from({ length: 12 }, (_, i) => (
-                <div
-                  key={i}
-                  className="absolute w-1 h-1 bg-yellow-400 rounded-full animate-pulse"
-                  style={{
-                    left: i < 6 ? '0%' : '100%',
-                    top: `${(i % 6) * 20}%`,
-                    animationDelay: `${i * 0.4}s`,
-                    animationDuration: `${3 + Math.random() * 2}s`,
-                    transform: `translate(${(Math.random() - 0.5) * 20}px, ${(Math.random() - 0.5) * 20}px)`
-                  }}
-                />
-              ))}
             </div>
           </div>
         </div>
