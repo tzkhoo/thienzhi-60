@@ -123,12 +123,36 @@ const ChatbotWidget = () => {
               </button>
             </div>
 
+            {/* Suggestion bubbles */}
+            <div className="px-4 py-3 border-b border-slate-700/50">
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={() => setMessage("Hi! I need help with customer service. Can you assist me?")}
+                  className="px-3 py-2 bg-slate-700/50 hover:bg-slate-600/50 text-white text-sm rounded-full border border-yellow-400/30 hover:border-yellow-400/60 transition-all duration-200"
+                >
+                  Customer service
+                </button>
+                <button
+                  onClick={() => setMessage("I'm interested in your sales services. Can you help me?")}
+                  className="px-3 py-2 bg-slate-700/50 hover:bg-slate-600/50 text-white text-sm rounded-full border border-yellow-400/30 hover:border-yellow-400/60 transition-all duration-200"
+                >
+                  Sales Assistant
+                </button>
+                <button
+                  onClick={() => setMessage("I have a general enquiry. Can you provide more information?")}
+                  className="px-3 py-2 bg-slate-700/50 hover:bg-slate-600/50 text-white text-sm rounded-full border border-yellow-400/30 hover:border-yellow-400/60 transition-all duration-200"
+                >
+                  Enquiry
+                </button>
+              </div>
+            </div>
+
             {/* Messages */}
             <div className="relative flex-1 overflow-y-auto px-4 pb-4 space-y-4">
               {messages.map((msg) => (
                 <div
                   key={msg.id}
-                  className={`flex items-start space-x-3 ${msg.isBot ? 'justify-start' : 'justify-end flex-row-reverse space-x-reverse'}`}
+                  className={`flex items-start space-x-3 ${msg.isBot ? 'justify-start' : 'justify-end'}`}
                 >
                   {/* Avatar */}
                   {msg.isBot && (
@@ -161,7 +185,7 @@ const ChatbotWidget = () => {
                   
                   {/* User Avatar */}
                   {!msg.isBot && (
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-blue-500 to-blue-700">
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-blue-500 to-blue-700 ml-3">
                       <span className="text-white font-bold text-sm">U</span>
                     </div>
                   )}
