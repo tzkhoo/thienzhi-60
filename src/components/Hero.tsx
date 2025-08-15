@@ -31,7 +31,7 @@ const Hero = () => {
         }`}>
           <div className="relative">
             <div className="relative mb-8 pt-16 sm:pt-8 md:pt-0">
-              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-blue-500 via-green-500 to-yellow-500 bg-clip-text text-transparent mb-6 leading-tight animate-title-glow animate-title-float">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-blue-500 via-green-500 via-purple-500 via-pink-500 to-yellow-500 bg-[length:300%_100%] animate-gradient-flow bg-clip-text text-transparent mb-6 leading-tight animate-title-float">
                 {userInfo.name}
               </h1>
               <p className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">
@@ -39,9 +39,9 @@ const Hero = () => {
               </p>
             </div>
 
-            {/* Count Up Stats - Mobile: Single Line, Desktop: Hidden first stat */}
+            {/* Count Up Stats - Mobile: Single Line, Desktop: Consistent sizing */}
             <div className="flex flex-row gap-2 sm:gap-4 max-w-4xl mx-auto mb-8 justify-center">
-              <div className="hidden sm:flex flex-col items-center justify-center bg-slate-800/30 backdrop-blur-sm rounded-xl border border-slate-700/50 p-4 hover:bg-slate-800/40 transition-all duration-300 hover:scale-105 hover:border-primary/30 min-w-[140px]">
+              <div className="hidden sm:flex flex-col items-center justify-center bg-slate-800/30 backdrop-blur-sm rounded-xl border border-slate-700/50 p-4 hover:bg-slate-800/40 transition-all duration-300 hover:scale-105 hover:border-primary/30 w-44">
                 <div className="text-2xl md:text-3xl font-bold text-primary mb-1">
                   {isVisible ? (
                     <CountUp
@@ -77,7 +77,7 @@ const Hero = () => {
               </div>
               
               {/* Desktop: Case Comp & Hackathons, Mobile: Competitions */}
-              <div className="flex flex-col items-center justify-center bg-slate-800/30 backdrop-blur-sm rounded-xl border border-slate-700/50 p-3 sm:p-4 hover:bg-slate-800/40 transition-all duration-300 hover:scale-105 hover:border-primary/30 flex-1 sm:min-w-[140px]">
+              <div className="flex flex-col items-center justify-center bg-slate-800/30 backdrop-blur-sm rounded-xl border border-slate-700/50 p-3 sm:p-4 hover:bg-slate-800/40 transition-all duration-300 hover:scale-105 hover:border-primary/30 flex-1 sm:w-44">
                 <div className="text-xl sm:text-2xl md:text-3xl font-bold text-primary mb-1">
                   {isVisible ? (
                     <CountUp
@@ -95,20 +95,35 @@ const Hero = () => {
                 </p>
               </div>
               
-              {/* Desktop: Cash Prize, Mobile: HKD cash prize */}
-              <div className="flex flex-col items-center justify-center bg-slate-800/30 backdrop-blur-sm rounded-xl border border-slate-700/50 p-3 sm:p-4 hover:bg-slate-800/40 transition-all duration-300 hover:scale-105 hover:border-primary/30 flex-1 sm:min-w-[140px]">
+              {/* Desktop: HKD250,000, Mobile: HKD cash prize */}
+              <div className="flex flex-col items-center justify-center bg-slate-800/30 backdrop-blur-sm rounded-xl border border-slate-700/50 p-3 sm:p-4 hover:bg-slate-800/40 transition-all duration-300 hover:scale-105 hover:border-primary/30 flex-1 sm:w-44">
                 <div className="text-xl sm:text-2xl md:text-3xl font-bold text-primary mb-1">
-                  {isVisible ? (
-                    <CountUp
-                      start={0}
-                      end={250}
-                      duration={5}
-                      suffix="K"
-                      separator=","
-                    />
-                  ) : (
-                    '0K'
-                  )}
+                  <span className="sm:hidden">
+                    {isVisible ? (
+                      <CountUp
+                        start={0}
+                        end={250}
+                        duration={5}
+                        suffix="K"
+                        separator=","
+                      />
+                    ) : (
+                      '250K'
+                    )}
+                  </span>
+                  <span className="hidden sm:inline">
+                    {isVisible ? (
+                      <CountUp
+                        start={0}
+                        end={250000}
+                        duration={5}
+                        prefix="HKD"
+                        separator=","
+                      />
+                    ) : (
+                      'HKD250,000'
+                    )}
+                  </span>
                 </div>
                 <p className="text-gray-300 text-center text-xs md:text-sm font-medium">
                   <span className="sm:hidden">HKD cash prize</span>
