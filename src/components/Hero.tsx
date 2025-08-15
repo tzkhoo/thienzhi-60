@@ -31,7 +31,7 @@ const Hero = () => {
         }`}>
           <div className="relative">
             <div className="relative mb-8 pt-16 sm:pt-8 md:pt-0">
-              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-blue-500 via-green-500 via-purple-500 via-pink-500 to-yellow-500 bg-[length:300%_100%] animate-gradient-flow bg-clip-text text-transparent mb-6 leading-tight animate-title-float">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-blue-500 to-green-500 to-yellow-500 bg-[length:200%_100%] animate-gradient-flow bg-clip-text text-transparent mb-6 leading-tight animate-title-float">
                 {userInfo.name}
               </h1>
               <p className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">

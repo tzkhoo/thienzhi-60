@@ -89,7 +89,10 @@ export default {
 					'0%': {
 						'background-position': '0% 50%'
 					},
-					'50%': {
+					'33%': {
+						'background-position': '50% 50%'
+					},
+					'66%': {
 						'background-position': '100% 50%'
 					},
 					'100%': {
@@ -100,7 +103,7 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'gradient-flow': 'gradient-flow 6s ease-in-out infinite'
+				'gradient-flow': 'gradient-flow 4s ease-in-out infinite'
 			}
 		}
 	},
