@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { userInfo } from "@/data/user-data";
 import CircularGallery from './CircularGallery';
 import CountUpCard from './CountUpCard';
+import CountUp from 'react-countup';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -29,7 +30,7 @@ const Hero = () => {
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
         }`}>
           <div className="relative">
-            <div className="relative mb-8">
+            <div className="relative mb-8 pt-16 sm:pt-8 md:pt-0">
               <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight animate-title-glow animate-title-float">
                 {userInfo.name}
               </h1>
@@ -38,24 +39,60 @@ const Hero = () => {
               </p>
             </div>
 
-            {/* Count Up Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-8">
-              <CountUpCard 
-                end={9}
-                label="Gold/Silver medals won"
-                duration={2}
-              />
-              <CountUpCard 
-                end={25}
-                label="Case Comp & Hackathon Joined"
-                duration={2.5}
-              />
-              <CountUpCard 
-                end={250000}
-                label="Cash Prize Awarded"
-                prefix="HKD"
-                duration={3}
-              />
+            {/* Count Up Stats - Compact Mobile Layout */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-4xl mx-auto mb-8 justify-center">
+              <div className="hidden sm:flex flex-col items-center justify-center bg-slate-800/30 backdrop-blur-sm rounded-xl border border-slate-700/50 p-4 hover:bg-slate-800/40 transition-all duration-300 hover:scale-105 hover:border-primary/30 min-w-[140px]">
+                <div className="text-2xl md:text-3xl font-bold text-primary mb-1">
+                  {isVisible ? (
+                    <CountUp
+                      start={0}
+                      end={9}
+                      duration={2}
+                    />
+                  ) : (
+                    '0'
+                  )}
+                </div>
+                <p className="text-gray-300 text-center text-xs md:text-sm font-medium">
+                  Gold/Silver medals
+                </p>
+              </div>
+              
+              <div className="flex flex-col items-center justify-center bg-slate-800/30 backdrop-blur-sm rounded-xl border border-slate-700/50 p-4 hover:bg-slate-800/40 transition-all duration-300 hover:scale-105 hover:border-primary/30 min-w-[140px]">
+                <div className="text-2xl md:text-3xl font-bold text-primary mb-1">
+                  {isVisible ? (
+                    <CountUp
+                      start={0}
+                      end={25}
+                      duration={2.5}
+                    />
+                  ) : (
+                    '0'
+                  )}
+                </div>
+                <p className="text-gray-300 text-center text-xs md:text-sm font-medium">
+                  Case Comp & Hackathons
+                </p>
+              </div>
+              
+              <div className="flex flex-col items-center justify-center bg-slate-800/30 backdrop-blur-sm rounded-xl border border-slate-700/50 p-4 hover:bg-slate-800/40 transition-all duration-300 hover:scale-105 hover:border-primary/30 min-w-[140px]">
+                <div className="text-2xl md:text-3xl font-bold text-primary mb-1">
+                  {isVisible ? (
+                    <CountUp
+                      start={0}
+                      end={250000}
+                      duration={3}
+                      prefix="HKD"
+                      separator=","
+                    />
+                  ) : (
+                    'HKD0'
+                  )}
+                </div>
+                <p className="text-gray-300 text-center text-xs md:text-sm font-medium">
+                  Cash Prize Awarded
+                </p>
+              </div>
             </div>
 
             <div className="relative mx-auto mt-4 w-full max-w-5xl">
